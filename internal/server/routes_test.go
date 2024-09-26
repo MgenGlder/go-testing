@@ -4,6 +4,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -28,4 +29,28 @@ func TestHandler(t *testing.T) {
 	if expected != string(body) {
 		t.Errorf("expected response body to be %v; got %v", expected, string(body))
 	}
+}
+
+func FuzzStringCompare2(f *testing.F) {
+	f.Add("hello", "world")
+	f.Add("go", "golang")
+
+	f.Fuzz(func(t *testing.T, a, b string) {
+		result := strings.Compare(a, b)
+		if result == 0 && a != b {
+			t.Errorf("strings.Compare(%q, %q) returned 0, but strings are not equal", a, b)
+		}
+	})
+}
+
+func FuzzStringCompare(f *testing.F) {
+	f.Add("hello", "world")
+	f.Add("go", "golang")
+
+	f.Fuzz(func(t *testing.T, a, b string) {
+		result := strings.Compare(a, b)
+		if result == 0 && a != b {
+			t.Errorf("strings.Compare(%q, %q) returned 0, but strings are not equal", a, b)
+		}
+	})
 }
