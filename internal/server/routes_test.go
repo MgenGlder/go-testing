@@ -6,7 +6,11 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"fmt"
+	"os"
 )
+
+var examplePackageVariable int
 
 func TestHandler(t *testing.T) {
 	s := &Server{}
@@ -35,6 +39,14 @@ func TestHandler(t *testing.T) {
 	if expected != string(body) {
 		t.Errorf("expected response body to be %v; got %v", expected, string(body))
 	}
+}
+
+func TestMain(m *testing.M) {
+	fmt.Println("Running examplePackageVariable scaffolding")
+	examplePackageVariable = 2
+	exitCode := m.Run()
+
+	os.Exit(exitCode)
 }
 
 func FuzzStringCompare2(f *testing.F) {
