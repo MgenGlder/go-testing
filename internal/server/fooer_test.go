@@ -6,6 +6,38 @@ import (
 	"os"
 )
 
+func TestCleanup(t *testing.T) {
+	f, _ := os.Create("tempfile")
+
+	// Do some testing and asserting
+
+	t.Cleanup(func() {
+		os.Remove(f.Name())
+	})
+}
+
+func TestTableTest(t *testing.T) {
+	data := []struct {
+		nameOfTest string
+		firstName string
+		expectedLastName string
+		expectedFavColor string
+		errorMsg string
+	}{
+		{"Test last name", "Kunle", "Oshiyoye", "green", "invalid last name"},
+		{"Test color", "John", "Smith", "red", "invalid color"},
+	}
+	for _, d := range data {
+		t.Run(d.nameOfTest, func(t *testing.T) {
+			lastName, favColor := PersonDetails(d.firstName)
+			if lastName != d.expectedLastName || favColor != d.expectedFavColor {
+				t.Error(d.errorMsg)
+			}
+		})
+	}
+}
+
+
 func TestFatalError(t *testing.T) {
 	// If FooMightFail fails, the following code will panic.
 	result, err := FooMightFail()
