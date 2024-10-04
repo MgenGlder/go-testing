@@ -1,6 +1,9 @@
 package server
 
-import "strconv"
+import (
+	"strconv"
+	"errors"
+)
 
 func Fooer(input int) string {
 	isfoo := (input % 3) == 0
@@ -14,5 +17,16 @@ func Fooer(input int) string {
 
 func internalFooerMethod(input int) int {
 	return input
+}
 
+func FooMightFail() (interface{}, error) {
+	return nil, errors.New("Unknown error")
+}
+
+func FooWillPanic() (interface{}, error) {
+	return nil, errors.New("Unknown error")
+}
+
+func FooWillHaveErrors() (interface{}, error) {
+	return nil, errors.New("Unknown error")
 }

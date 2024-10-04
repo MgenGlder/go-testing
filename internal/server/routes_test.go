@@ -6,8 +6,8 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
-	"fmt"
-	"os"
+	// "fmt"
+	// "os"
 	// "path/filepath"
 )
 
@@ -56,13 +56,13 @@ func TestTestData(t *testing.T) {
     // ...
 }
 
-func TestMain(m *testing.M) {
-	fmt.Println("Running examplePackageVariable scaffolding")
-	examplePackageVariable = 2
-	exitCode := m.Run()
+// func TestMain(m *testing.M) {
+// 	fmt.Println("Running examplePackageVariable scaffolding")
+// 	examplePackageVariable = 2
+// 	exitCode := m.Run()
 
-	os.Exit(exitCode)
-}
+// 	os.Exit(exitCode)
+// }
 
 func FuzzStringCompare2(f *testing.F) {
 	f.Add("hello", "world")
