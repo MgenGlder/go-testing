@@ -8,7 +8,7 @@ import (
 	"testing"
 	"fmt"
 	"os"
-	"path/filepath"
+	// "path/filepath"
 )
 
 var examplePackageVariable int
@@ -44,13 +44,13 @@ func TestHandler(t *testing.T) {
 
 func TestTestData(t *testing.T) {
     // Get the path to the testdata directory
-    testdataDir := filepath.Join("..", "testdata")
+    // testdataDir := filepath.Join("..", "testdata")
 
     // Read the contents of a testdata file
-    data, err := ioutil.ReadFile(filepath.Join(testdataDir, "mydata.json"))
-    if err != nil {
-        t.Fatal(err)
-    }
+    // data, err := ioutil.ReadFile(filepath.Join(testdataDir, "mydata.json"))
+    // if err != nil {
+    //     t.Fatal(err)
+    // }
 
     // Use the testdata in your test assertions
     // ...

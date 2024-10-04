@@ -11,3 +11,8 @@ func Fooer(input int) string {
 
 	return strconv.Itoa(input)
 }
+
+func internalFooerMethod(input int) int {
+	return input
+
+}
