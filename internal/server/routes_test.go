@@ -8,6 +8,7 @@ import (
 	"testing"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 var examplePackageVariable int
@@ -39,6 +40,20 @@ func TestHandler(t *testing.T) {
 	if expected != string(body) {
 		t.Errorf("expected response body to be %v; got %v", expected, string(body))
 	}
+}
+
+func TestTestData(t *testing.T) {
+    // Get the path to the testdata directory
+    testdataDir := filepath.Join("..", "testdata")
+
+    // Read the contents of a testdata file
+    data, err := ioutil.ReadFile(filepath.Join(testdataDir, "mydata.json"))
+    if err != nil {
+        t.Fatal(err)
+    }
+
+    // Use the testdata in your test assertions
+    // ...
 }
 
 func TestMain(m *testing.M) {
